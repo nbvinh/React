@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { onMemorized,tongleShow } from "../reducer/action";
+
 const Word = (props) => {
     const dispath = useDispatch()
     const filterStatus = useSelector(state => state.filterStatus)
     const { en, vn, memorized, isShow, id } = props.mywork;
     const memorizeWord =()=>{
-        dispath({
-            type: 'MEMORIZED',
-            id : id
-        });
+        dispath(onMemorized(id));
     }
     const onShow =()=>{
-        dispath({
-            type: 'TONGLE_SHOW',
-            id : id
-        });
+        dispath(tongleShow(id));
     }
     const textShow = isShow ? vn : '======'
     const textDecorationLine = memorized ? 'line-through' : 'none';

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { filterShow,filtermemorized,needPractice } from "../reducer/action";
 const Filter = () => {
     const dispath = useDispatch();
     
@@ -10,18 +11,18 @@ const Filter = () => {
         return styles.buttontext;
     }
 
-    const setFilterStatus =(actionType)=>{
-        dispath({type:actionType})
-    }
+    // const setFilterStatus =(actionType)=>{
+    //     dispath({type:actionType})
+    // }
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={()=>setFilterStatus('FILETR_SHOW')}>
+            <TouchableOpacity onPress={()=>dispath(filterShow())}>
                 <Text style={getTextStyle('SHOW_ALL')}>SHOW ALL</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=> setFilterStatus('FILETR_MEMORIZED')}>
+            <TouchableOpacity onPress={()=> dispath(filtermemorized())}>
                 <Text style={getTextStyle('MEMORIZED')}>MEMORIZED</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=> setFilterStatus('NEED_PRACTICE')}>
+            <TouchableOpacity onPress={()=> dispath(needPractice())}>
                 <Text style={getTextStyle('NEED_PRACTICE')}>NEED PRACTICE</Text>
             </TouchableOpacity>
         </View>

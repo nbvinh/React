@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useDispatch,useSelector } from "react-redux";
+import { tongleIsAdding } from "../reducer/action";
 
 const Header =()=>{
     const dispath = useDispatch()
     const onUp=()=>{
-        dispath({type:'TONGLE_ISADDING'})
+        dispath(tongleIsAdding())
     }
     
     return(

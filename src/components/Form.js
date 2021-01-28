@@ -1,17 +1,15 @@
 import React,{useState} from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet,Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
+import { tongleIsAdding,addWord } from "../reducer/action";
+
 const Form = () => {
     const dispath = useDispatch()
     const [en,setEn] = useState('');
     const [vn,setVn] = useState('');
     const onAdd = () =>{
-        dispath({
-            type: 'ADD_WORD',
-            en:en,
-            vn:en
-        })
-        dispath({type: 'TONGLE_ISADDING'})
+        dispath(addWord(en,vn))
+        dispath(tongleIsAdding())
     }
     return (
         <View style={styles.container}>
